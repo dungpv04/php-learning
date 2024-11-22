@@ -1,9 +1,8 @@
 <?php include 'header.php'; ?>
+<?php include 'navigation.php'; ?>
 <?php include 'users.php'; ?>
 
 <main>
-    <h2>Danh Sách Người Dùng</h2>
-
     <?php if (empty($users)): ?>
         <p>Không có sản phẩm nào.</p>
     <?php else: ?>
