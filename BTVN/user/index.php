@@ -1,6 +1,9 @@
 <?php include 'header.php'; ?>
 <?php include 'navigation.php'; ?>
 <?php include 'users.php'; ?>
+<?php include 'add.php'; ?>
+<?php include 'edit.php' ?>
+<?php include 'delete.php' ?>
 
 <main>
     <?php if (empty($users)): ?>
@@ -67,6 +70,31 @@
             </div>        
         </div>
     <?php endif; ?>
+    <script>
+$(document).ready(function(){
+	// Activate tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+	
+	// Select/Deselect checkboxes
+	var checkbox = $('table tbody input[type="checkbox"]');
+	$("#selectAll").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;                        
+			});
+		} else{
+			checkbox.each(function(){
+				this.checked = false;                        
+			});
+		} 
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+			$("#selectAll").prop("checked", false);
+		}
+	});
+});
+</script>
 </main>
 
 <?php include 'footer.php'; ?>
