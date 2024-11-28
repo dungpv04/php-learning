@@ -1,9 +1,16 @@
+<?php 
+    session_start();
+
+    if (!isset($_SESSION['data'])) {
+        $_SESSION['data'] = [];
+    }
+?>
 <?php include 'header.php'; ?>
 <?php include 'navigation.php'; ?>
 <?php include 'users.php'; ?>
 <?php include 'add.php'; ?>
-<?php include 'edit.php' ?>
-<?php include 'delete.php' ?>
+
+
 
 <main>
     <?php if (empty($users)): ?>
@@ -21,23 +28,13 @@
                                 <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
                                     <i class="material-icons">&#xE147;</i> 
                                     <span>Thêm</span>
-                                </a>
-                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                                    <i class="material-icons">&#xE15C;</i> 
-                                    <span>Xóa</span>
-                                </a>                        
+                                </a>                    
                             </div>
                         </div>
                     </div>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="selectAll">
-                                        <label for="selectAll"></label>
-                                    </span>
-                                </th>
                                 <th>Họ tên</th>
                                 <th>Email</th>
                                 <th>Địa chỉ</th>
@@ -46,21 +43,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($users as $user): ?>
+                            <?php foreach ($_SESSION['data'] as $id => $record): ?>
                                 <tr>
+                                    <td><?= htmlspecialchars($record['name']) ?></td>
+                                    <td><?= htmlspecialchars($record['email']) ?></td>
+                                    <td><?= htmlspecialchars($record['address']) ?></td>
+                                    <td><?= htmlspecialchars($record['phone']) ?></td>
                                     <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td><?= htmlspecialchars($user['name']) ?></td>
-                                    <td><?= htmlspecialchars($user['email']) ?></td>
-                                    <td><?= htmlspecialchars($user['address']) ?></td>
-                                    <td><?= htmlspecialchars($user['phone']) ?></td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <?php echo('<a href="edit.php?id='.$id.'"class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>'); ?>
+							        <?php echo('<a href="delete.php?id='.$id.'" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'); ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
