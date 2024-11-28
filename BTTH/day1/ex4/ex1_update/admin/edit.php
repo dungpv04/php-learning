@@ -1,6 +1,5 @@
 <?php
 	include("header.php");
-	include("navigation.php");
 	session_start();
 	$id = $_GET["id"];
 	$data = $_SESSION['data'][$id];
@@ -19,16 +18,12 @@
 						<input type="text" name="name" class="form-control" required value="<?php echo $data['name']; ?>">
 					</div>
 					<div class="form-group">
-						<label>Email</label>
-						<input type="email" name="email" class="form-control" required value="<?php echo $data['email']; ?>">
+						<label>Description</label>
+						<textarea class="form-control" name="description" required ><?php echo $data['description']; ?></textarea>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
-						<textarea class="form-control" name="address" required ><?php echo $data['address']; ?></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" name="phone" required value="<?php echo $data['phone']; ?>">
+						<label>Image</label>
+						<input type="file" class="form-control" name="image" required>
 					</div>					
 				</div>
 				<div class="modal-footer">
@@ -43,18 +38,43 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 		$name = htmlspecialchars($_POST['name']);
-		$email = htmlspecialchars($_POST['email']);
-		$address = htmlspecialchars($_POST['address']);
-		$phone = htmlspecialchars($_POST['phone']);
+		$description = htmlspecialchars($_POST['description']);
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			// Directory to save uploaded files
+			$uploadDir = '../images/';
 		
-		if (isset($_SESSION['data'][$id])) {
-			$_SESSION['data'][$id] = [
-				'name' => $name,
-				'email' => $email,
-				'address'=> $address,
-				'phone'=> $phone
-			];
+			// Ensure the directory exists
+			if (!is_dir($uploadDir)) {
+				mkdir($uploadDir, 0777, true);
+			}
+		
+			// Handle file upload
+			if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+				$fileName = basename($_FILES['image']['name']);
+				$uploadFilePath = $uploadDir . $fileName;
+		
+				if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFilePath)) {
+					echo "File uploaded successfully! Path: " . $uploadFilePath;
+				} else {
+					echo "Error: Unable to save the file.";
+				}
+			} else {
+				echo "Error: File upload failed. ";
+				if (isset($_FILES['image']['error'])) {
+					echo "Error code: " . $_FILES['image']['error'];
+				}
+			}
 		}
+		
+		$finalImgPath = str_replace('../', '', $uploadFilePath);
+		
+
+		$conn = new mysqli("localhost", "root", "", "FLOWERS");
+		$stmt = $conn->prepare("UPDATE FLowerList SET Name = ?, Description = ?, Image = ? WHERE Id = ?");
+		$stmt->bind_param("ssss", $name, $description, $finalImgPath, $id);
+        $stmt->execute();
+
 		header('Location:index.php');
 		exit();
 	}
