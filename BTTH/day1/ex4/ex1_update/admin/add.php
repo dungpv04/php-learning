@@ -31,6 +31,9 @@
 
 <?php
 	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
+
+		$conn = new mysqli("localhost", "root", "", "FLOWERS");
+
 		if (!is_dir($saveDir)) {
 			mkdir($saveDir, 0777, true);
 		}
@@ -66,12 +69,12 @@
 			}
 		}
 		
-		$_SESSION['data'][$id] = [
-			'name' => $name,
-			'description' => $description,
-			'image'=> str_replace('../', '', $uploadFilePath)
-		];
+		$finalImgPath = str_replace('../', '', $uploadFilePath);
 		
+		$stmt = $conn->prepare("INSERT INTO FLowerList (Name, Description, Image) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $description, $finalImgPath);
+        $stmt->execute();
+
 		header("Location: index.php");
 		exit;
 	}

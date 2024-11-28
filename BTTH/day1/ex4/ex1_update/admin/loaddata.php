@@ -13,7 +13,7 @@
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["Name"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["Description"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["Image"]) . "</td>";
+            echo('<td><a href="../'.$row['Image'].'">'.$row['Image'].'</a></td>');
             echo "</tr>";
         }
     } else {
