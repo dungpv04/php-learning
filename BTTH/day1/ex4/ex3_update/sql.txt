@@ -1,0 +1,9 @@
+CREATE TABLE Accounts(
+    UserName varchar(25) NOT NULL,
+    Password varchar(25) NOT NULL,
+    FirstName varchar(25) NOT NULL,
+    LastName varchar(25) NOT NULL,
+    City varchar(25) NOT NULL, 
+    Email varchar(25) NOT NULL, 
+    Course varchar(25) NOT NULL
+)

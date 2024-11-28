@@ -1,0 +1,9 @@
+CREATE TABLE QuestionList (
+	Id int AUTO_INCREMENT PRIMARY KEY,
+    QuestionTitle text not null, 
+    OptionA text not null, 
+    OptionB text not null, 
+    OptionC text not null, 
+    OptionD text not null, 
+    CorrectAnswers text not null
+)
