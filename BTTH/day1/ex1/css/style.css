@@ -1,0 +1,62 @@
+/* Căn giữa toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Tiêu đề chính */
+h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* Từng loài hoa */
+h2 {
+    font-size: 1.8rem;
+    color: #2980b9;
+    margin: 15px 0 5px;
+    text-align: center;
+}
+
+/* Phần mô tả */
+p {
+    font-size: 1.1rem;
+    margin: 20px 20%;
+    text-align: center;
+    max-width: 600px;
+}
+
+/* Hình ảnh */
+a img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Liên kết hình ảnh */
+a {
+    text-decoration: none;
+}
+
+/* Container cho danh sách hoa */
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
