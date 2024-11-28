@@ -1,6 +1,7 @@
 <?php
     $flowers = [
         [
+            "id"=> "1",
             "name" => "Đỗ quyên",
             "description" => "Hoa đỗ quyên là biểu tượng của sự dịu dàng và thanh lịch, 
                             thường được ví với nét đẹp của người phụ nữ Việt Nam. Đỗ quyên còn mang ý nghĩa về sự kiên cường, 
@@ -10,6 +11,7 @@
             "image"=> "images/doquyen.jpg",
         ],
         [
+            "id"=> "2",
             "name" => "Hải đường",
             "description" => "Hoa hải đường là loài hoa quý phái, 
                             mang ý nghĩa giàu sang và phú quý. Vào dịp Tết Nguyên Đán, 
@@ -19,6 +21,7 @@
             "image"=> "images/haiduong.jpg",
         ],
         [
+            "id"=> "3",
             "name" => "Mai",
             "description" => "Hoa mai là biểu tượng không thể thiếu của mùa xuân, 
                             đặc biệt ở miền Nam Việt Nam. Sắc vàng của hoa mai tượng trưng cho sự thịnh vượng, 
@@ -28,6 +31,7 @@
             "image"=> "images/mai.jpg",
         ],
         [
+            "id"=> "4",
             "name" => "Tường vy",
             "description" => "Hoa tường vy mang nét đẹp dịu dàng và trong sáng, 
                             thường được ví với tuổi trẻ đầy nhiệt huyết. 
