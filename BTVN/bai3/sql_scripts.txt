@@ -1,0 +1,7 @@
+CREATE TABLE userList(
+    Id int PRIMARY KEY AUTO_INCREMENT,
+    Name varchar(30) NOT NULL,
+    Email varchar(30) NOT NULL,
+    Phone varchar(10) NOT NULL,
+    Address varchar(60) NOT NULL
+)
