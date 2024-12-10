@@ -44,7 +44,14 @@
                                 <td><?= htmlspecialchars($record['phone']) ?></td>
                                 <td>
                                 <?php echo('<a href="employee/update?id='.$record['id'].'"class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>'); ?>
-                                <?php echo('<a href="?controller=User&action=Delete&id='.$record['Id'].'" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'); ?>
+                                
+                                <form action="{{ route('employee.delete', ['id' => $record['id']]) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="delete" style="border: none; background: none;">
+                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                    </button>
+                                </form>                                
                                 </td>
                             </tr>
                         <?php endforeach; ?>

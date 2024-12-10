@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Http;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 
@@ -18,7 +19,7 @@ class EmployeeController extends Controller
         
         $employees = $this->employeeModel::all();
         session_start();
-        $_SESSION['data'] = [];
+        $_SESSION['employees'] = [];
         foreach ($employees as $employee) {
             $_SESSION['employees'][$employee['id']] = $employee;
         }
@@ -59,6 +60,14 @@ class EmployeeController extends Controller
             'address'=> $request->input('address'),
         ]);
 
+        if ($query) {
+            return redirect()->route('employee.index')->with('success','');
+        }
+    }
+
+    public function delete(Request $request){
+        $id = $request->query('id');
+        $query = $this->employeeModel::where('id', $id)->delete();
         if ($query) {
             return redirect()->route('employee.index')->with('success','');
         }
