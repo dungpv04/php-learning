@@ -10,7 +10,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::with('class')->get();
-        return response()->json($students);
+        return view('student.index', compact('students'));
     }
 
     public function show($id)

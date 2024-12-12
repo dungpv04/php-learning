@@ -10,7 +10,7 @@ class IssueController extends Controller
     public function index()
     {
         $issues = Issue::with('computer')->get();
-        return response()->json($issues);
+        return view('issue.index', compact('issues'));
     }
 
     public function show($id)

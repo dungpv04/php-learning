@@ -10,7 +10,7 @@ class ClassesController extends Controller
     public function index()
     {
         $classes = Classes::all();
-        return response()->json($classes);
+        return view("class.index", compact("classes"));
     }
 
     public function show($id)

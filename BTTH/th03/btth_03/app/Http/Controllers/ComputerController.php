@@ -10,7 +10,7 @@ class ComputerController extends Controller
     public function index()
     {
         $computers = Computer::all();
-        return response()->json($computers);
+        return view("computer.index", compact("computers"));
     }
 
     public function show($id)

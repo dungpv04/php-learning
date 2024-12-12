@@ -10,7 +10,7 @@ class SaleController extends Controller
     public function index()
     {
         $sales = Sale::with('medicine')->get();
-        return response()->json($sales);
+        return view('sale.index', compact('sales'));
     }
 
     public function show($id)
