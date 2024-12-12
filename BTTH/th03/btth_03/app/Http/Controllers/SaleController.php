@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $sales = Sale::with('medicine')->get();
+        if ($request->query('relation') === 'full') {
+            return view('sale.full', compact('sales'));
+        }
         return view('sale.index', compact('sales'));
     }
 

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $issues = Issue::with('computer')->get();
+        if ($request->query('relation') === 'full') {
+            return view('issue.full', compact('issues'));
+        }
         return view('issue.index', compact('issues'));
     }
 

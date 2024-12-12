@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $students = Student::with('class')->get();
+        if ($request->query('relation') === 'full') {
+            return view('student.full', compact('students'));
+        }
         return view('student.index', compact('students'));
     }
 
