@@ -3,7 +3,7 @@
 @section('title', 'Student')
 
 @section('content')
-    <a href="{{ route('student.create') }}" class="btn btn-primary">Create New Student</a>
+    <a href="{{ route('students.create') }}" class="btn btn-primary">Create New Student</a>
     <table class="table">
         <thead>
             <tr>
@@ -22,8 +22,8 @@
                     <td>{{ $student->date_of_birth }}</td>
                     <td>{{ $student->parent_phone }}</td>
                     <td>
-                        <a href="{{ route('student.edit', ['id' => $student->id]) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('student.destroy', ['id' => $student->id]) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('students.edit', ['id' => $student->id]) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('students.destroy', ['id' => $student->id]) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

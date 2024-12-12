@@ -34,6 +34,6 @@ class MedicineController extends Controller
     public function destroy($id)
     {
         Medicine::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('medicines.index')->with('success','');
     }
 }

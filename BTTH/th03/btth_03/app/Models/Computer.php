@@ -9,7 +9,7 @@ class Computer extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'computer_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'computer_name',

@@ -35,6 +35,6 @@ class IssueController extends Controller
     public function destroy($id)
     {
         Issue::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('issues.index')->with('success','');
     }
 }

@@ -35,6 +35,6 @@ class ComputerController extends Controller
     public function destroy($id)
     {
         Computer::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('computers.index')->with('success','');
     }
 }

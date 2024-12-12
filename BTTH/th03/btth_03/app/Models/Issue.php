@@ -9,7 +9,7 @@ class Issue extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'issue_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'computer_id',

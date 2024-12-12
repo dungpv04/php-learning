@@ -10,7 +10,7 @@ class Classes extends Model
     //
     use HasFactory;
 
-    protected $primaryKey = 'class_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'grade_level',

@@ -35,6 +35,6 @@ class SaleController extends Controller
     public function destroy($id)
     {
         Sale::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('sales.index')->with('success','');
     }
 }

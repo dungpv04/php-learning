@@ -35,6 +35,6 @@ class StudentController extends Controller
     public function destroy($id)
     {
         Student::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('students.index')->with('success','');
     }
 }

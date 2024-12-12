@@ -35,6 +35,6 @@ class ClassesController extends Controller
     public function destroy($id)
     {
         Classes::destroy($id);
-        return response()->json(null, 204);
+        return redirect()->route('classes.index')->with('success','');
     }
 }
