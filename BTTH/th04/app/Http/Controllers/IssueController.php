@@ -17,12 +17,6 @@ class IssueController extends Controller
         return view('issue.index', compact('issues'));
     }
 
-    public function show($id)
-    {
-        $issue = Issue::with('computer')->findOrFail($id);
-        return response()->json($issue);
-    }
-
     public function create(){
         $computers= Computer::all();
         return view("issue.create", compact('computers'));
@@ -33,10 +27,10 @@ class IssueController extends Controller
         $request->validate([
             'reported_by' => 'required|max:100',
             'reported_date' => 'required|date',
-            'description' => 'required|max:500',
-            'urgency' => 'required|in:low,medium,high',
-            'status' => 'required|in:open,in progress,resolved',
+            'urgency' => 'required|in:Low,Medium,High',
+            'status' => 'required|in:Open,In progress,Resolved',
             'computer_id' => 'required',
+            'description' => 'required|max:500'
         ]);
 
         Issue::create($request->all());
@@ -54,10 +48,10 @@ class IssueController extends Controller
         $request->validate([
             'reported_by' => 'required|max:100',
             'reported_date' => 'required|date',
-            'urgency' => 'required|in:low,medium,high',
-            'description' => 'required|max:500',
-            'status' => 'required|in:open,in progress,resolved',
+            'urgency' => 'required|in:Low,Medium,High',
+            'status' => 'required|in:Open,In progress,Resolved',
             'computer_id' => 'required',
+            'description' => 'required|max:500'
         ]);
 
         $issue = Issue::findOrFail($id);
